@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'aqui2'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_26F3747917294BE995564E9E04EDBA85 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4766D643167B435AB01A1329040D742A }}
           package: '*.jar'
