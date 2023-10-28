@@ -11,11 +11,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping
-@RestController("record")
+@RequestMapping("record")
+@RestController()
 public class RecordInputController {
     
     @Autowired
@@ -23,13 +24,13 @@ public class RecordInputController {
     
 
     @GetMapping("all")
-    public Page<RecordInputDTO> getAll(Pageable pageable){
-        return record.getAll(pageable);
+    public ResponseEntity<Page<RecordInputDTO>> getAll(Pageable pageable){
+        return new ResponseEntity<>(record.getAll(pageable), HttpStatus.OK) ;
     }
     
     @PostMapping("save")
-    public RecordInputDTO save(@RequestBody RecordInputDTO recordInputDTO){
-     return record.save(recordInputDTO);
+    public ResponseEntity<RecordInputDTO> save(@RequestBody RecordInputDTO recordInputDTO){
+     return new ResponseEntity<>(record.save(recordInputDTO), HttpStatus.CREATED);
     }  
     
     

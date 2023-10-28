@@ -8,10 +8,11 @@ import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
 public interface WateringScheduleMapper {
-    @Mapping(source = "time", target = "time", dateFormat = "HH:mm")
+    
     WateringScheduleDTO toWateringScheduleDTO(WateringSchedule wateringSchedule);
     List<WateringScheduleDTO> toWateringScheduleDTOs(List<WateringSchedule> wateringSchedule);
     
-    @InheritInverseConfiguration
+    @InheritInverseConfiguration     
+    @Mapping(target = "scheduleValve", ignore = true)
     WateringSchedule toWateringSchedule(WateringScheduleDTO wateringScheduleDTO);
 }

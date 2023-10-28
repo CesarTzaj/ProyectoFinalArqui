@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class WateringScheduleController {
     @Autowired
     private WateringScheduleService schedule;
 
-    @GetMapping("guatemala-time")
+    @GetMapping("gt-time")
     public ResponseEntity<?> getCurrentTimeInGuatemala() {
         Map<String, String> time = new HashMap<>();
         ZoneId guatemalaZone = ZoneId.of("America/Guatemala");
@@ -32,13 +33,13 @@ public class WateringScheduleController {
     }
 
     @GetMapping("all")
-    public List<WateringScheduleDTO> getAll() {
-        return schedule.getAll();
+    public ResponseEntity<List<WateringScheduleDTO>> getAll() {
+        return new ResponseEntity<>(schedule.getAll(), HttpStatus.OK);
     }
 
     @PostMapping("save")
-    public WateringScheduleDTO save(@RequestBody WateringScheduleDTO wateringScheduleDTO) {
-        return schedule.save(wateringScheduleDTO);
+    public ResponseEntity<WateringScheduleDTO> save(@RequestBody WateringScheduleDTO wateringScheduleDTO) {
+        return new ResponseEntity<>(schedule.save(wateringScheduleDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping("delete")

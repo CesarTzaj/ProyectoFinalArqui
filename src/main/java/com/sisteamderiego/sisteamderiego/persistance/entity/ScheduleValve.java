@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class ScheduleValve {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; 
     @Column(name = "id_valvula")
     private Integer idValve;
