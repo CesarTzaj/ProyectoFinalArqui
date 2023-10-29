@@ -11,9 +11,6 @@ import java.time.ZonedDateTime;
 @Entity
 @Table(name = "registro")
 public class RecordInput {
-
-    
-
     
     @Id
     @Column(name = "id_registro")
@@ -29,6 +26,7 @@ public class RecordInput {
     private boolean status;
     @Column(name = "id_ubicacion")
     private Integer idLocation;
+    private String humedad;
 
     @ManyToOne
     @JoinColumn(name = "id_ubicacion", insertable = false, updatable = false)
@@ -114,4 +112,12 @@ public class RecordInput {
         this.valve = valve;
     }
 
+    public String getHumedad() {
+        return humedad;
+    }
+
+    public void setHumedad(String humedad) {
+        this.humedad = humedad;
+    }
+    
 }

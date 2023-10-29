@@ -7,15 +7,14 @@ public class RecordInputDTO {
     private Integer id;
     private Integer idSensor;
     private String  date;
+    private String humedad;
     private Integer idValve;
     private boolean status;
     private Integer idLocation;
     private LocationDTO location;
     private SensorDTO sensor;    
     private ValveDTO valve;
-    
-        
-    
+
     public Integer getId() {
         return id;
     }
@@ -40,7 +39,13 @@ public class RecordInputDTO {
         this.date = date;
     }
 
+    public String getHumedad() {
+        return humedad;
+    }
 
+    public void setHumedad(String humedad) {
+        this.humedad = humedad;
+    }
 
     public Integer getIdValve() {
         return idValve;
@@ -89,5 +94,6 @@ public class RecordInputDTO {
     public void setValve(ValveDTO valve) {
         this.valve = valve;
     }
-
+    
+    
 }
